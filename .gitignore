@@ -5,22 +5,18 @@ node_modules/
 dist/
 build/
 .vite/
+*.local
 
 # Vite cache
 .vite-cache/
 .cache/
+logs
 *.log
+npm-debug.log*
 
 # dotenv files (upewnij się, czy nie chcesz ich commitować)
 .env
 .env.*.local
 
-# -----------------------------
-# TypeScript
-# -----------------------------
-*.tsbuildinfo
-
-# -----------------------------
-# WebStorm / JetBrains
-# -----------------------------
-.idea/
+# Editor directories and files
+.idea
