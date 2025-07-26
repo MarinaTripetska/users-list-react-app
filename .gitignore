@@ -1,0 +1,26 @@
+# -----------------------------
+# Node.js / Vite
+# -----------------------------
+node_modules/
+dist/
+build/
+.vite/
+
+# Vite cache
+.vite-cache/
+.cache/
+*.log
+
+# dotenv files (upewnij się, czy nie chcesz ich commitować)
+.env
+.env.*.local
+
+# -----------------------------
+# TypeScript
+# -----------------------------
+*.tsbuildinfo
+
+# -----------------------------
+# WebStorm / JetBrains
+# -----------------------------
+.idea/
