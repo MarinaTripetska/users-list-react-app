@@ -1,5 +1,16 @@
 # React + TypeScript + Vite
+
+---
  
+## Deployed on gh-pages
+[Deployment Page](https://marinatripetska.github.io/users-list-react-app/)
+
+---
+## Base url
+Please, setup VITE_BASE_URL in `.env`. Use '/' for development
+
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
