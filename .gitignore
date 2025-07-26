@@ -14,8 +14,9 @@ logs
 *.log
 npm-debug.log*
 
-# dotenv files (upewnij się, czy nie chcesz ich commitować)
-.env
+# dotenv files
+.env.development
+.env.production
 .env.*.local
 
 # Editor directories and files
