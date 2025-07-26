@@ -1,11 +1,26 @@
-import {createBrowserRouter} from "react-router";
-import App from './App.tsx'
+import { createBrowserRouter, Navigate } from 'react-router';
+import Layout from './Layout';
+import AboutPage from './pages/AboutPage';
+import UsersPage from './pages/UsersPage';
 
 const router = createBrowserRouter([
         {
             path: "/",
-            Component: App,
-
+            Component: Layout,
+            children: [
+                {
+                    index: true,
+                    Component: () => Navigate({to: "/about", replace: true}),
+                },
+                {
+                    path: "/about",
+                    Component: AboutPage,
+                },
+                {
+                    path: "/users",
+                    Component: UsersPage,
+                },
+            ],
         },
     ],
     {
