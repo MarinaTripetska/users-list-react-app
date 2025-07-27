@@ -2,8 +2,9 @@ import {useEffect, useState} from 'react';
 import {useNavigate} from "react-router";
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchAllUsers, fetchUsersByName} from '@/store/usersSlice';
+import toast from 'react-hot-toast';
 import type {RootState, AppDispatch} from '@/store';
-import { SpinnerCircular } from 'spinners-react';
+import {SpinnerCircular} from 'spinners-react';
 
 function UsersPage() {
     const navigate = useNavigate();
@@ -23,6 +24,15 @@ function UsersPage() {
         }
     }, [search, dispatch]);
 
+    useEffect(() => {
+        if (error) {
+            toast.error(error, {
+                duration: 4000,
+                position: 'top-center',
+            });
+        }
+    }, [error]);
+
     return (
         <main>
             <div>
@@ -39,39 +49,39 @@ function UsersPage() {
                 <div role="status" aria-live="polite">
                     {loading &&
                         <div>
-                            <SpinnerCircular />
+                            <SpinnerCircular/>
                         </div>
-
                     }
 
-                    {error && <p>{error}</p>} {/*todo: set notification*/}
-
-                    {!loading && users.length === 0 && (
+                    {!loading && !error && users.length === 0 && (
                         <p>No users found.</p>
                     )}
                 </div>
 
-                <ul>
-                    {users.map((user) => (
-                        <li key={user.id}>
-                            <h3>
-                                {user.firstName} {user.lastName}
-                            </h3>
+                {!loading && !error && users.length > 0 &&
+                    <ul>
+                        {users.map((user) => (
+                            <li key={user.id}>
+                                <h3>
+                                    {user.firstName} {user.lastName}
+                                </h3>
 
-                            <img
-                                loading="lazy"
-                                width="150"
-                                height="auto"
-                                src={user.image}
-                                alt={`${user.firstName} ${user.lastName}'s avatar`}
-                            />
+                                <img
+                                    loading="lazy"
+                                    width="150"
+                                    height="auto"
+                                    src={user.image}
+                                    alt={`${user.firstName} ${user.lastName}'s avatar`}
+                                />
 
-                            <button onClick={() => navigate(`/users/${user.id}`)}>
-                                Details
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+                                <button onClick={() => navigate(`/users/${user.id}`)}>
+                                    Details
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                }
+
             </div>
         </main>
     )

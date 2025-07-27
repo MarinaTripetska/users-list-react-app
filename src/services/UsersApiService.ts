@@ -46,7 +46,7 @@ export default class UsersApiService {
     public async getAllUsers(): Promise<User[]> {
         const url = `/users`;
         const result = await this.api.get<UsersApiResponse>(url);
-        return result.data.users;
+        return result.data?.users;
     }
 
     public async getUsersByName(name: string): Promise<User[] | null> {
@@ -62,7 +62,7 @@ export default class UsersApiService {
             return null;
         }
 
-        return result.data.users;
+        return result.data?.users;
     }
 
     public async getUserById(id: number): Promise<User> {
