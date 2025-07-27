@@ -3,6 +3,7 @@ import {useNavigate} from "react-router";
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchAllUsers, fetchUsersByName} from '@/store/usersSlice';
 import type {RootState, AppDispatch} from '@/store';
+import { SpinnerCircular } from 'spinners-react';
 
 function UsersPage() {
     const navigate = useNavigate();
@@ -36,7 +37,12 @@ function UsersPage() {
                 />
 
                 <div role="status" aria-live="polite">
-                    {loading && <p>Loading...</p>} {/*todo: loader with overlay but in bg will show old user list*/}
+                    {loading &&
+                        <div>
+                            <SpinnerCircular />
+                        </div>
+
+                    }
 
                     {error && <p>{error}</p>} {/*todo: set notification*/}
 
