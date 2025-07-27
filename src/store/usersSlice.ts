@@ -21,9 +21,9 @@ export const fetchAllUsers = createAsyncThunk<User[]>(
     async (_, {rejectWithValue}) => {
         try {
             return await api.getAllUsers();
-        } catch (e: any) {
-            return rejectWithValue(e.message ?? 'Unknown error');
-        }
+        } catch (e) {
+            const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+            return rejectWithValue(errorMessage);        }
     }
 );
 
@@ -32,17 +32,18 @@ export const fetchUserById = createAsyncThunk<User, number>(
     async (id, {rejectWithValue}) => {
         try {
             return await api.getUserById(id);
-        } catch (e: any) {
-            return rejectWithValue(e.message ?? 'Unknown error');
+        } catch (e) {
+            const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+            return rejectWithValue(errorMessage);
         }
     }
 );
 
 export const fetchUsersByName = createAsyncThunk<User[] | null, string>(
     'users/fetchByName',
-    async (name: string, { rejectWithValue }) => {
+    async (name: string, {rejectWithValue}) => {
         try {
-           return await api.getUsersByName(name);
+            return await api.getUsersByName(name);
         } catch (err) {
             return rejectWithValue((err as Error).message);
         }
@@ -75,7 +76,7 @@ const usersSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchUsersByName.fulfilled, (state, action: PayloadAction<User[] | null>) => {
-                if(action.payload){
+                if (action.payload) {
                     state.list = action.payload;
                 }
                 state.error = null;

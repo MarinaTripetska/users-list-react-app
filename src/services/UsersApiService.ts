@@ -1,7 +1,6 @@
 import axios, {type AxiosInstance} from "axios";
 import type {User, UsersApiResponse} from "../types/UsersApiResponse.ts";
 
-//todo: abort controller for search
 export default class UsersApiService {
     api: AxiosInstance;
     private searchAbortController: AbortController | null = null;

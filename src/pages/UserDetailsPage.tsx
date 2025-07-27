@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {useNavigate, useParams, Navigate} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import {useSelector, useDispatch} from 'react-redux';
 import type {RootState, AppDispatch} from '@/store';
 import {fetchUserById} from "@/store/usersSlice.ts";
@@ -14,17 +14,22 @@ function UserDetailsPage() {
     const loading = useSelector((state: RootState) => state.users.loading);
     const error = useSelector((state: RootState) => state.users.error);
 
-
-    const isValidId = !isNaN(Number(id))
-    if (!isValidId) {
-        return <Navigate to="/404" replace />;
-    }
-
     useEffect(() => {
-        if (!user && id) {
-            dispatch(fetchUserById(Number(id)));
+        if (!id) {
+            throw new Error("User ID is missing");
         }
-    }, [dispatch, id, user]);
+
+        const numericId = Number(id);
+
+        if (isNaN(numericId)) {
+            navigate('/404');
+            return;
+        }
+
+        if (!user) {
+            dispatch(fetchUserById(numericId));
+        }
+    }, [user, id, navigate, dispatch]);
 
     if (loading) {
         return <p>Loading user details...</p>;
