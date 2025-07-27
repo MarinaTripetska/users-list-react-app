@@ -1,11 +1,12 @@
-import { createBrowserRouter, Navigate } from 'react-router';
+import {createBrowserRouter, Navigate} from 'react-router';
+import {lazy} from 'react';
 import Layout from '@/Layout';
-import AboutPage from '@/pages/AboutPage';
-import UsersPage from '@/pages/UsersPage';
-import ErrorPage from '@/pages/ErrorPage';
-import UserDetailsPage from '@/pages/UserDetailsPage';
 
-//todo: lazy loading
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const UsersPage = lazy(() => import('@/pages/UsersPage'));
+const UserDetailsPage = lazy(() => import('@/pages/UserDetailsPage'));
+const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
+
 
 const router = createBrowserRouter([
         {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
                 },
                 {
                     path: "/users/:id",
-                   Component: UserDetailsPage,
+                    Component: UserDetailsPage,
                 },
                 {
                     path: '*',
