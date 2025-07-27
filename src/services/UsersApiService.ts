@@ -40,7 +40,8 @@ export default class UsersApiService {
     }
 
     public static create(): UsersApiService {
-        return new UsersApiService("api");
+        const baseURL = import.meta.env.DEV ? 'api' : import.meta.env.VITE_API_BASE_URL;
+        return new UsersApiService(baseURL);
     }
 
     public async getAllUsers(): Promise<User[]> {
