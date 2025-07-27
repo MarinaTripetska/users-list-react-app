@@ -1,32 +1,22 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import {useNavigate} from "react-router";
-import UsersApiService from "@/services/UsersApiService.ts";
-import type { User } from "@/types/UsersApiResponse.ts";
+import {useSelector, useDispatch} from 'react-redux';
+import {fetchAllUsers} from '@/store/usersSlice';
+import type {RootState, AppDispatch} from '@/store';
 
 function UsersPage() {
     const navigate = useNavigate();
 
-    const [users, setUsers] = useState<User[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+    const users = useSelector((state: RootState) => state.users.list);
+    const loading = useSelector((state: RootState) => state.users.loading);
+    const error = useSelector((state: RootState) => state.users.error);
+    const dispatch = useDispatch<AppDispatch>();
+
     const [search, setSearch] = useState<string>("");
 
     useEffect(() => {
-        const fetchUsers = async () =>{
-            setLoading(true);
-            try {
-                const api = UsersApiService.create();
-                const users = await api.getAllUsers();
-                setUsers(users);
-            } catch(e) {
-                if(e instanceof Error){
-                    setError(e.message + "Failed to load users.")
-                }
-            }
-        }
-
-        fetchUsers().finally(() => setLoading(false));
-    }, []);
+        dispatch(fetchAllUsers());
+    }, [dispatch]);
 
     return (
         <main>
