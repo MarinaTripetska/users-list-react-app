@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Toaster} from 'react-hot-toast';
 import {SpinnerCircular} from 'spinners-react';
 import store from '@/store';
-import '@/index.css'
+import '@/styles/index.scss'
 import router from "@/routes.ts";
 
 createRoot(document.getElementById('root')!).render(
