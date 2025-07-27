@@ -1,0 +1,12 @@
+function ErrorPage() {
+    return (
+        <>
+            <section>
+                <h1>404 – Not Found</h1>
+                <p>Oops! The page you’re looking for doesn’t exist.</p>
+            </section>
+        </>
+    )
+}
+
+export default ErrorPage;
