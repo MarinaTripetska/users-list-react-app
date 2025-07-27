@@ -58,7 +58,7 @@ function UsersPage() {
                     )}
                 </div>
 
-                {!loading && !error && users.length > 0 &&
+                {users.length > 0 &&
                     <ul>
                         {users.map((user) => (
                             <li key={user.id}>
