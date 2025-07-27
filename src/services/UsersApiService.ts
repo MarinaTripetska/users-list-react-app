@@ -40,7 +40,7 @@ export default class UsersApiService {
     }
 
     public static create(): UsersApiService {
-        const baseURL = import.meta.env.DEV ? 'api' : import.meta.env.VITE_API_BASE_URL;
+        const baseURL = import.meta.env.DEV ? '/api' : import.meta.env.VITE_API_BASE_URL;
         return new UsersApiService(baseURL);
     }
 
@@ -54,5 +54,11 @@ export default class UsersApiService {
         const url = `/users/search?q=${name}}`;
         const result = await this.api.get<UsersApiResponse>(url);
         return result.data.users;
+    }
+
+    public async getUserById(id: number): Promise<User> {
+        const url = `/users/${id}`;
+        const result = await this.api.get<User>(url);
+        return result.data;
     }
 }

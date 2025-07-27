@@ -1,19 +1,36 @@
 import {useNavigate, useParams} from "react-router";
-import {useSelector} from 'react-redux';
-import type {RootState} from '@/store';
+import {useSelector, useDispatch} from 'react-redux';
+import type {RootState, AppDispatch} from '@/store';
+import {useEffect} from "react";
+import {fetchUserById} from "@/store/usersSlice.ts";
 
 function UserDetailsPage() {
     const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
 
     const {id} = useParams();
-    const user = useSelector((state: RootState) => {
-            const result = state.users.list.find((u) => u.id === Number(id))
-            if (result) {
-                return result
-            }
-            throw new Error(`Could not find user with id ${id}`)
+    const user = useSelector((state: RootState) =>
+        state.users.list.find((u) => u.id === Number(id)));
+    const loading = useSelector((state: RootState) => state.users.loading);
+    const error = useSelector((state: RootState) => state.users.error);
+
+    useEffect(() => {
+        if (!user && id) {
+            dispatch(fetchUserById(Number(id)));
         }
-    );
+    }, [dispatch, id, user]);
+
+    if (loading) {
+        return <p>Loading user details...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>;
+    }
+
+    if (!user) {
+        return <p>User not found.</p>;
+    }
 
     return (
         <div>
