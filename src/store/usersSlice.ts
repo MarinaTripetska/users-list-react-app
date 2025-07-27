@@ -38,6 +38,17 @@ export const fetchUserById = createAsyncThunk<User, number>(
     }
 );
 
+export const fetchUsersByName = createAsyncThunk<User[] | null, string>(
+    'users/fetchByName',
+    async (name: string, { rejectWithValue }) => {
+        try {
+           return await api.getUsersByName(name);
+        } catch (err) {
+            return rejectWithValue((err as Error).message);
+        }
+    }
+);
+
 const usersSlice = createSlice({
     name: 'users',
     initialState,
@@ -55,6 +66,22 @@ const usersSlice = createSlice({
 
             })
             .addCase(fetchAllUsers.rejected, (state, action) => {
+                state.error = action.payload as string;
+                state.loading = false;
+            })
+            //add by search
+            .addCase(fetchUsersByName.pending, (state) => {
+                state.error = null;
+                state.loading = true;
+            })
+            .addCase(fetchUsersByName.fulfilled, (state, action: PayloadAction<User[] | null>) => {
+                if(action.payload){
+                    state.list = action.payload;
+                }
+                state.error = null;
+                state.loading = false;
+            })
+            .addCase(fetchUsersByName.rejected, (state, action) => {
                 state.error = action.payload as string;
                 state.loading = false;
             })

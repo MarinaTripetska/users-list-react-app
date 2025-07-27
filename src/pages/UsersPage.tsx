@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useNavigate} from "react-router";
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchAllUsers} from '@/store/usersSlice';
+import {fetchAllUsers, fetchUsersByName} from '@/store/usersSlice';
 import type {RootState, AppDispatch} from '@/store';
 
 function UsersPage() {
@@ -15,8 +15,12 @@ function UsersPage() {
     const [search, setSearch] = useState<string>("");
 
     useEffect(() => {
-        dispatch(fetchAllUsers());
-    }, [dispatch]);
+        if (search.trim().length > 0) {
+            dispatch(fetchUsersByName(search.trim()));
+        } else {
+            dispatch(fetchAllUsers());
+        }
+    }, [search, dispatch]);
 
     return (
         <main>
@@ -25,31 +29,43 @@ function UsersPage() {
 
                 <input
                     type="text"
+                    aria-label="Search users"
                     placeholder="Search users..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
 
-                <div>
-                    {loading && users.length === 0 && <p>Loading...</p>}
+                <div role="status" aria-live="polite">
+                    {loading && <p>Loading...</p>} {/*todo: loader with overlay but in bg will show old user list*/}
 
                     {error && <p>{error}</p>} {/*todo: set notification*/}
 
-                    <div>
-                        {users.map((user) => (
-                            <div key={user.id}>
-                                <h3>
-                                    {user.firstName} {user.lastName}
-                                </h3>
-
-                                <button onClick={() => navigate(`/users/${user.id}`)}>
-                                    Details
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-
+                    {!loading && users.length === 0 && (
+                        <p>No users found.</p>
+                    )}
                 </div>
+
+                <ul>
+                    {users.map((user) => (
+                        <li key={user.id}>
+                            <h3>
+                                {user.firstName} {user.lastName}
+                            </h3>
+
+                            <img
+                                loading="lazy"
+                                width="150"
+                                height="auto"
+                                src={user.image}
+                                alt={`${user.firstName} ${user.lastName}'s avatar`}
+                            />
+
+                            <button onClick={() => navigate(`/users/${user.id}`)}>
+                                Details
+                            </button>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </main>
     )

@@ -4,6 +4,7 @@ import type {User, UsersApiResponse} from "../types/UsersApiResponse.ts";
 //todo: abort controller for search
 export default class UsersApiService {
     api: AxiosInstance;
+    private searchAbortController: AbortController | null = null;
 
     constructor(baseURL: string) {
         this.api = axios.create({
@@ -17,7 +18,6 @@ export default class UsersApiService {
         })
 
         this.api.interceptors.response.use(
-
             (response) => {
                 if (response.status >= 200 && response.status <= 300) {
                     return response;
@@ -50,9 +50,19 @@ export default class UsersApiService {
         return result.data.users;
     }
 
-    public async getUsersByName(name: string): Promise<User[]>  {
-        const url = `/users/search?q=${name}}`;
-        const result = await this.api.get<UsersApiResponse>(url);
+    public async getUsersByName(name: string): Promise<User[] | null> {
+        if (this.searchAbortController) {
+            this.searchAbortController.abort();
+        }
+
+        this.searchAbortController = new AbortController();
+
+        const url = `/users/search?q=${name}`;
+        const result = await this.api.get<UsersApiResponse>(url, {signal: this.searchAbortController.signal});
+        if(result===null){
+            return null;
+        }
+
         return result.data.users;
     }
 
