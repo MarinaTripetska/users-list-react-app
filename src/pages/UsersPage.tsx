@@ -31,9 +31,9 @@ function UsersPage() {
                 />
 
                 <div>
-                    {loading && <p>Loading...</p>}
+                    {loading && users.length === 0 && <p>Loading...</p>}
 
-                    {error && <p>{error}</p>}
+                    {error && <p>{error}</p>} {/*todo: set notification*/}
 
                     <div>
                         {users.map((user) => (
