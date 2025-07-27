@@ -4,9 +4,7 @@ import UsersApiService from "@/services/UsersApiService.ts";
 import type { User } from "@/types/UsersApiResponse.ts";
 
 function UsersPage() {
-    const api = UsersApiService.create();
     const navigate = useNavigate();
-
 
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -17,6 +15,7 @@ function UsersPage() {
         const fetchUsers = async () =>{
             setLoading(true);
             try {
+                const api = UsersApiService.create();
                 const users = await api.getAllUsers();
                 setUsers(users);
             } catch(e) {
@@ -28,9 +27,6 @@ function UsersPage() {
 
         fetchUsers().finally(() => setLoading(false));
     }, []);
-
-
-
 
     return (
         <main>
