@@ -35,7 +35,7 @@ function UsersPage() {
 
     return (
         <main>
-            <div>
+            <div className="container">
                 <h1>Users page</h1>
 
                 <input
@@ -59,9 +59,9 @@ function UsersPage() {
                 </div>
 
                 {users.length > 0 &&
-                    <ul>
+                    <ul className="user-list">
                         {users.map((user) => (
-                            <li key={user.id}>
+                            <li key={user.id} className="user-card">
                                 <h3>
                                     {user.firstName} {user.lastName}
                                 </h3>

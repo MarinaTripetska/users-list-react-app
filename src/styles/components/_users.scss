@@ -1,0 +1,52 @@
+@import "../variables";
+@import '../mixins';
+
+.user-list {
+  display: grid;
+  gap: 1rem;
+
+  @include respond-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.user-card {
+  background: $color-bg-light;
+  border: 1px solid $color-border;
+  border-radius: 0.75rem;
+  padding: 1rem;
+
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-within {
+    box-shadow: 0 0 0 3px $color-focus;
+    outline: none;
+  }
+
+  h3 {
+    color: $color-text;
+  }
+
+  button {
+    background: $color-primary;
+    color: $color-button-txt;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background: darken($color-primary, 10%);
+    }
+
+    &:focus {
+      outline: 2px solid $color-focus;
+      outline-offset: 2px;
+    }
+  }
+}
