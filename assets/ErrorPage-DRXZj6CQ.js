@@ -1,0 +1,1 @@
+import{u as o,j as e}from"./index-PIpZwk04.js";function r(){const n=o();return e.jsx(e.Fragment,{children:e.jsxs("section",{children:[e.jsx("h1",{children:"Page not found"}),e.jsx("p",{children:"Oops! The page you’re looking for doesn’t exist."}),e.jsx("button",{onClick:()=>n("/"),children:"Back to main page!"})]})})}export{r as default};
