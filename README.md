@@ -18,7 +18,7 @@ VITE_API_BASE_URL=https://dummyjson.com
 [Deployment Test Page](https://marinatripetska.github.io/users-list-react-app/)
 
 ## Deployed for production on Netlify
-[Deployment Production Page](https://users-list-react-app.netlify.app/users)
+[Deployment Production Page](https://users-list-react-app.netlify.app/)
 
 ---
 
