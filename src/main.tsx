@@ -10,7 +10,7 @@ import router from "@/routes.ts";
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <Suspense fallback={<SpinnerCircular size={100}/>}>
+        <Suspense fallback={<div className="spinner-overlay"><SpinnerCircular size={100}/></div>}>
             <Toaster/>
 
             <Provider store={store}>
