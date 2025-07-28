@@ -1,0 +1,11 @@
+.footer {
+  background-color: $color-bg-light;
+  padding: 1.5rem 0;
+
+  .footer-text {
+    text-align: center;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    color: $color-text-light;
+  }
+}
