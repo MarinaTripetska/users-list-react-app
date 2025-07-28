@@ -1,8 +1,12 @@
-.user-title {
+.users-section {
+  min-height: 100vh;
+}
+
+.users-title {
   margin-bottom: 2rem;
 }
 
-.user-search {
+.users-search {
   margin-bottom: 2rem;
 
   display: block;
@@ -30,11 +34,17 @@
   }
 }
 
-.user-info {
+.users-info {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $color-text;
 
+  @include respond-up(md) {
+    font-size: 1.1rem;
+  }
 }
 
-.user-list {
+.users-list {
   display: grid;
   gap: 1rem;
 
@@ -47,7 +57,7 @@
   }
 }
 
-.user-card {
+.users-card {
   display: flex;
   flex-direction: column;
   align-items: center;

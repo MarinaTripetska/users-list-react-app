@@ -34,16 +34,16 @@ function UsersPage() {
     }, [error]);
 
     return (
-        <section className="section">
+        <section className="section users-section">
             <div className="container">
-                <h1 className="section-title user-title">Users</h1>
+                <h1 className="section-title users-title">Users</h1>
 
                 <input
                     type="text"
                     id="search-users-input"
                     aria-label="Search users"
                     placeholder="Search users..."
-                    className="user-search"
+                    className="users-search"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
@@ -56,14 +56,14 @@ function UsersPage() {
                     }
 
                     {!loading && !error && users.length === 0 && (
-                        <p className="user-info">No users found.</p>
+                        <p className="users-info">No users found.</p>
                     )}
                 </div>
 
                 {users.length > 0 &&
-                    <ul className="user-list">
+                    <ul className="users-list">
                         {users.map((user) => (
-                            <li key={user.id} className="user-card">
+                            <li key={user.id} className="users-card">
                                 <h3>
                                     {user.firstName} {user.lastName}
                                 </h3>
