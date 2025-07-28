@@ -34,14 +34,16 @@ function UsersPage() {
     }, [error]);
 
     return (
-        <main>
+        <section className="section">
             <div className="container">
-                <h1>Users page</h1>
+                <h1 className="user-title">Users</h1>
 
                 <input
                     type="text"
+                    id="search-users-input"
                     aria-label="Search users"
                     placeholder="Search users..."
+                    className="user-search"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
@@ -54,7 +56,7 @@ function UsersPage() {
                     }
 
                     {!loading && !error && users.length === 0 && (
-                        <p>No users found.</p>
+                        <p className="user-info">No users found.</p>
                     )}
                 </div>
 
@@ -83,7 +85,7 @@ function UsersPage() {
                 }
 
             </div>
-        </main>
+        </section>
     )
 }
 
