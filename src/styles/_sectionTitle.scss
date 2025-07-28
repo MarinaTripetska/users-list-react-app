@@ -1,3 +1,7 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
 .section-title {
   color: $color-text;
   text-align: center;

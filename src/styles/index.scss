@@ -1,13 +1,14 @@
-@import 'variables';
-@import 'mixins';
-@import 'reset';
-@import 'common';
-@import 'container';
-@import 'section';
-@import 'sectionTitle';
-@import 'layout';
-@import 'components/spinner';
-@import 'components/header';
-@import 'components/footer';
-@import 'components/users';
-@import 'components/about';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@use 'reset';
+@use 'common';
+@use 'container';
+@use 'section';
+@use 'sectionTitle';
+@use 'layout';
+@use 'components/spinner';
+@use 'components/header';
+@use 'components/footer';
+@use 'components/users';
+@use 'components/about';

@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 .spinner-overlay{
   position: fixed;
   top: $header-height;
