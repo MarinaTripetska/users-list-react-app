@@ -1,0 +1,39 @@
+// === Breakpoints ===
+$breakpoint-xs: 360px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1600px;
+
+// === Colors ===
+$color-primary: rgb(63, 119, 236);
+$color-accent: #ff5722;
+
+$color-bg: #ffffff;
+$color-bg-light: #f9f9f9;
+
+$color-text: #26262b;
+$color-text-light: #444;
+$color-text-muted: #888;
+$color-text-reverse: #f9f9f9;
+
+$color-border: #ddd;
+$color-button-txt: #fff;
+
+$color-success: #2e7d32;
+$color-error: #d32f2f;
+$color-warning: #fbc02d;
+$color-info: #0288d1;
+
+$color-bg-input: #f9f9f9;
+
+// === UI States ===
+$color-loading-bg: #f3f3f3;
+$color-focus: #0057ff;
+$header-height: 60px;
+$footer-height: 72px;
+
+// === Fonts ===
+$primary-font: 'Montserrat', sans-serif;
+$secondary-font: 'Abril Fatface', sans-serif;

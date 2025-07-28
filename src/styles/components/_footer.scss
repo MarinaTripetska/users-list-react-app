@@ -1,0 +1,14 @@
+@use '../variables' as *;
+
+.footer {
+  background-color: $color-bg-light;
+  padding: 1.5rem 0;
+  min-height: $footer-height;
+
+  .footer-text {
+    text-align: center;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    color: $color-text-light;
+  }
+}

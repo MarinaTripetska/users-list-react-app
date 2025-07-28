@@ -1,0 +1,23 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+
+.about-title {
+  margin-bottom: 2rem;
+}
+
+.about-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: $color-text;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include respond-up(md) {
+      font-size: 1.1rem;
+    }
+}
+

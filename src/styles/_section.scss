@@ -1,0 +1,13 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.section {
+  padding: 2rem 0;
+
+  @include respond-up(md) {
+    padding: 3rem 0;
+  }
+  @include respond-up(xxl) {
+    padding: 4rem 0;
+  }
+}

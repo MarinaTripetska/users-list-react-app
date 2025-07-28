@@ -6,7 +6,7 @@ function Layout() {
     return (
         <>
             <Header/>
-            <main>
+            <main className="main-block">
                 <Outlet/>
             </main>
             <Footer/>

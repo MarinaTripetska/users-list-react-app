@@ -1,0 +1,29 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.user-details {
+  max-width: 600px;
+  margin-inline: auto;
+  padding: 2rem 1rem;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: $color-text;
+  }
+
+  img {
+    margin: 0 auto 3rem auto;
+
+  }
+
+  button {
+    margin-top: 2rem;
+  }
+}

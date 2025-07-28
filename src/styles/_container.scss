@@ -1,0 +1,32 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
+.container {
+  width: 100%;
+  padding-inline: 1rem;
+  margin-inline: auto;
+  max-width: $breakpoint-xs;
+
+  @include respond-up(sm) {
+    max-width: $breakpoint-sm;
+    padding-inline: 1.5rem;
+  }
+
+  @include respond-up(md) {
+    max-width: $breakpoint-md;
+    padding-inline: 2rem;
+  }
+
+  @include respond-up(lg) {
+    max-width: $breakpoint-lg;
+  }
+
+  @include respond-up(xl) {
+    max-width: $breakpoint-xl;
+  }
+
+  @include respond-up(xxl) {
+    max-width: $breakpoint-xxl;
+  }
+}

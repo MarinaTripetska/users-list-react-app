@@ -1,0 +1,14 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
+.section-title {
+  color: $color-text;
+  text-align: center;
+  font-size: 3rem;
+
+
+  @include respond-up(lg) {
+    font-size: 4rem;
+  }
+}
