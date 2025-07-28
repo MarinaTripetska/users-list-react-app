@@ -76,7 +76,7 @@ function UsersPage() {
                                     alt={`${user.firstName} ${user.lastName}'s avatar`}
                                 />
 
-                                <button onClick={() => navigate(`/users/${user.id}`)}>
+                                <button className="primary-btn" onClick={() => navigate(`/users/${user.id}`)}>
                                     Details
                                 </button>
                             </li>

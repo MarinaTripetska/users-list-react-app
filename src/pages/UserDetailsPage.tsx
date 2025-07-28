@@ -3,6 +3,9 @@ import {useNavigate, useParams} from "react-router";
 import {useSelector, useDispatch} from 'react-redux';
 import type {RootState, AppDispatch} from '@/store';
 import {fetchUserById} from "@/store/usersSlice.ts";
+import {SpinnerCircular} from 'spinners-react';
+import toast from "react-hot-toast";
+
 
 function UserDetailsPage() {
     const navigate = useNavigate();
@@ -31,29 +34,59 @@ function UserDetailsPage() {
         }
     }, [user, id, navigate, dispatch]);
 
-    if (loading) {
-        return <p>Loading user details...</p>;
-    }
+    useEffect(() => {
+        if (error) {
+            toast.error(error, {
+                duration: 4000,
+                position: 'top-center',
+            });
+        }
+    }, [error]);
 
-    if (error) {
-        return <p>Error: {error}</p>;
-    }
 
     if (!user) {
-        return <p>User not found.</p>;
+        return;
     }
 
     return (
-        <div>
-            <h1>
-                {user.firstName} {user.lastName}
-            </h1>
-            <p>Email: {user.email}</p>
-            <p>Phone: {user.phone}</p>
-            <p>Username: {user.username}</p>
+        <section className="section">
+            <div className="container">
+                <div className="user-details">
+                    {loading &&
+                        <div className="spinner-overlay">
+                            <SpinnerCircular/>
+                        </div>
+                    }
 
-            <button onClick={() => navigate("/users")}>Back</button>
-        </div>
+                    {!user &&
+                        <p>User not found.</p>
+                    }
+
+                    {user &&
+                        <>
+                            <h1 className="section-title user-title">
+                                {user.firstName} {user.lastName}
+                            </h1>
+
+                            <img
+                                loading="lazy"
+                                width="150"
+                                height="auto"
+                                src={user.image}
+                                alt={`${user.firstName} ${user.lastName}'s avatar`}
+                            />
+
+                            <p>Email: {user.email}</p>
+                            <p>Phone: {user.phone}</p>
+                            <p>Username: {user.username}</p>
+
+                            <button className="primary-btn" onClick={() => navigate("/users")}>Back</button>
+                        </>
+                    }
+
+                </div>
+            </div>
+        </section>
     );
 }
 

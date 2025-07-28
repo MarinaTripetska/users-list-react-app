@@ -81,20 +81,5 @@
 
   button {
     width: 100%;
-    background: $color-primary;
-    color: $color-button-txt;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-
-    &:hover {
-      background: scale($color-primary, 10%);
-    }
-
-    &:focus {
-      outline: 2px solid $color-focus;
-      outline-offset: 2px;
-    }
   }
 }
