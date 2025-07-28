@@ -1,7 +1,3 @@
-.users-section {
-  min-height: 100vh;
-}
-
 .users-title {
   margin-bottom: 2rem;
 }
@@ -90,7 +86,7 @@
     cursor: pointer;
 
     &:hover {
-      background: darken($color-primary, 10%);
+      background: scale($color-primary, 10%);
     }
 
     &:focus {

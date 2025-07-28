@@ -34,7 +34,7 @@ function UsersPage() {
     }, [error]);
 
     return (
-        <section className="section users-section">
+        <section className="section">
             <div className="container">
                 <h1 className="section-title users-title">Users</h1>
 
@@ -50,7 +50,7 @@ function UsersPage() {
 
                 <div role="status" aria-live="polite">
                     {loading &&
-                        <div>
+                        <div className="spinner-overlay">
                             <SpinnerCircular/>
                         </div>
                     }
