@@ -1,14 +1,5 @@
 .user-title {
   margin-bottom: 2rem;
-
-  color: $color-text;
-  text-align: center;
-  font-size: 3rem;
-
-
-  @include respond-up(lg) {
-    font-size: 4rem;
-  }
 }
 
 .user-search {

@@ -36,7 +36,7 @@ function UsersPage() {
     return (
         <section className="section">
             <div className="container">
-                <h1 className="user-title">Users</h1>
+                <h1 className="section-title user-title">Users</h1>
 
                 <input
                     type="text"

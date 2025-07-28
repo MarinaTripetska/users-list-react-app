@@ -1,0 +1,7 @@
+.main-block {
+  padding-top: $header-height;
+
+  @include respond-up(sm) {
+    padding-top: 0;
+  }
+}
