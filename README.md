@@ -8,13 +8,13 @@
 ## Base url
 Please, setup `.env`. For development:
 
-```
+```bash
 VITE_BASE_URL=/
 VITE_API_BASE_URL=https://dummyjson.com
 ```
 
 ---
-## Deployed fot test on gh-pages
+## Deployed for test on gh-pages
 [Deployment Test Page](https://marinatripetska.github.io/users-list-react-app/)
 
 ## Deployed for production on Netlify
